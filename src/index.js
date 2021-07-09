@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 if (typeof window !== "undefined") {
-  const ace = import("imperial-ace-builds");
+  const ace = require("imperial-ace-builds");
 }
 
 class CodeEditor extends Component {
@@ -10,8 +10,8 @@ class CodeEditor extends Component {
     if (typeof window !== "undefined") {
       const { onChange, setReadOnly, setValue, theme, mode } = this.props;
 
-      import(`imperial-ace-builds/src-noconflict/mode-${mode}`);
-      import(`imperial-ace-builds/src-noconflict/mode-${theme}`);
+      require(`imperial-ace-builds/src-noconflict/mode-${mode}`);
+      require(`imperial-ace-builds/src-noconflict/mode-${theme}`);
 
       const editor = ace.edit("ace-editor");
       this.editor = editor;
