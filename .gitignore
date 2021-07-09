@@ -34,5 +34,3 @@ node_modules
 # Babel Build
 lib
 
-# UMD Build
-dist
