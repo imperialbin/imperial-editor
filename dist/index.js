@@ -91,9 +91,9 @@ CodeEditor.defaultProps = {
   onChange: function onChange() {},
   setValue: "",
   setReadOnly: false,
-  theme: "eclipse",
+  theme: "custom",
   mode: "javascript",
-  style: { height: "300px", width: "400px" }
+  style: { height: "100vh", width: "100vw" }
 };
 
 module.exports = CodeEditor;
