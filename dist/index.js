@@ -40,7 +40,8 @@ var CodeEditor = function (_Component) {
             setReadOnly = _props.setReadOnly,
             setValue = _props.setValue,
             theme = _props.theme,
-            mode = _props.mode;
+            mode = _props.mode,
+            autoFocus = _props.autoFocus;
 
 
         require("imperial-ace-builds/src-noconflict/mode-" + mode);
@@ -55,6 +56,8 @@ var CodeEditor = function (_Component) {
         });
         editor.setReadOnly(setReadOnly);
         editor.setValue(setValue);
+
+        if (autoFocus) editor.focus();
       }
     }
   }, {
@@ -80,6 +83,7 @@ CodeEditor.propTypes = {
   editorId: _propTypes2.default.string,
   onChange: _propTypes2.default.func,
   setReadOnly: _propTypes2.default.bool,
+  autoFocus: _propTypes2.default.bool,
   setValue: _propTypes2.default.string,
   theme: _propTypes2.default.string,
   mode: _propTypes2.default.string,
@@ -90,6 +94,7 @@ CodeEditor.defaultProps = {
   editorId: "ace-editor",
   onChange: function onChange() {},
   setValue: "",
+  autoFocus: false,
   setReadOnly: false,
   theme: "imperial",
   mode: "javascript",

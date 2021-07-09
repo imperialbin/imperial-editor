@@ -8,7 +8,8 @@ if (typeof window !== "undefined") {
 class CodeEditor extends Component {
   componentDidMount() {
     if (typeof window !== "undefined") {
-      const { onChange, setReadOnly, setValue, theme, mode } = this.props;
+      const { onChange, setReadOnly, setValue, theme, mode, autoFocus } =
+        this.props;
 
       require(`imperial-ace-builds/src-noconflict/mode-${mode}`);
       require(`imperial-ace-builds/src-noconflict/theme-${theme}`);
@@ -20,6 +21,8 @@ class CodeEditor extends Component {
       editor.on("change", (e) => onChange(editor.getValue(), e));
       editor.setReadOnly(setReadOnly);
       editor.setValue(setValue);
+
+      if (autoFocus) editor.focus();
     }
   }
 
@@ -37,6 +40,7 @@ CodeEditor.propTypes = {
   editorId: PropTypes.string,
   onChange: PropTypes.func,
   setReadOnly: PropTypes.bool,
+  autoFocus: PropTypes.bool,
   setValue: PropTypes.string,
   theme: PropTypes.string,
   mode: PropTypes.string,
@@ -47,6 +51,7 @@ CodeEditor.defaultProps = {
   editorId: "ace-editor",
   onChange: () => {},
   setValue: "",
+  autoFocus: false,
   setReadOnly: false,
   theme: "imperial",
   mode: "javascript",
