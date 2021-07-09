@@ -1,23 +1,29 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-if (typeof window !== "undefined") {
-  const ace = require("imperial-ace-builds");
+if (typeof window !== 'undefined') {
+  const ace = require('brace');
 }
 
 class CodeEditor extends Component {
   componentDidMount() {
-    if (typeof window !== "undefined") {
-      const { onChange, setReadOnly, setValue, theme, mode } = this.props;
+    if (typeof window !== 'undefined') {
+      const {
+        onChange,
+        setReadOnly,
+        setValue,
+        theme,
+        mode,
+      } = this.props;
 
-      require(`imperial-ace-builds/src-noconflict/mode-${mode}`);
-      require(`imperial-ace-builds/src-noconflict/mode-${theme}`);
+      require(`brace/mode/${mode}`);
+      require(`brace/theme/${theme}`);
 
-      const editor = ace.edit("ace-editor");
+      const editor = ace.edit('ace-editor');
       this.editor = editor;
       editor.getSession().setMode(`ace/mode/${mode}`);
       editor.setTheme(`ace/theme/${theme}`);
-      editor.on("change", (e) => onChange(editor.getValue(), e));
+      editor.on('change', e => onChange(editor.getValue(), e));
       editor.setReadOnly(setReadOnly);
       editor.setValue(setValue);
     }
@@ -29,7 +35,9 @@ class CodeEditor extends Component {
 
   render() {
     const { style, editorId } = this.props;
-    return <div id={editorId} style={style}></div>;
+    return (
+      <div id={editorId} style={style}></div>
+    );
   }
 }
 
@@ -44,13 +52,13 @@ CodeEditor.propTypes = {
 };
 
 CodeEditor.defaultProps = {
-  editorId: "ace-editor",
+  editorId: 'ace-editor',
   onChange: () => {},
-  setValue: "",
+  setValue: '',
   setReadOnly: false,
-  theme: "eclipse",
-  mode: "javascript",
-  style: { height: "300px", width: "400px" },
+  theme: 'eclipse',
+  mode: 'javascript',
+  style: { height: '300px', width: '400px'}
 };
 
 module.exports = CodeEditor;
