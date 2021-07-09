@@ -11,7 +11,7 @@ class CodeEditor extends Component {
       const { onChange, setReadOnly, setValue, theme, mode } = this.props;
 
       require(`imperial-ace-builds/src-noconflict/mode-${mode}`);
-      require(`imperial-ace-builds/src-noconflict/mode-${theme}`);
+      require(`imperial-ace-builds/src-noconflict/theme-${theme}`);
 
       const editor = ace.edit("ace-editor");
       this.editor = editor;
