@@ -91,7 +91,7 @@ CodeEditor.defaultProps = {
   onChange: function onChange() {},
   setValue: "",
   setReadOnly: false,
-  theme: "custom",
+  theme: "imperial",
   mode: "javascript",
   style: { height: "100vh", width: "100vw" }
 };
