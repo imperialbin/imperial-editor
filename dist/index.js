@@ -44,7 +44,7 @@ var CodeEditor = function (_Component) {
 
 
         require("imperial-ace-builds/src-noconflict/mode-" + mode);
-        require("imperial-ace-builds/src-noconflict/mode-" + theme);
+        require("imperial-ace-builds/src-noconflict/theme-" + theme);
 
         var editor = ace.edit("ace-editor");
         this.editor = editor;
